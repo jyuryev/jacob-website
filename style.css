@@ -1,0 +1,124 @@
+/*
+ * Global typography
+ * We set html to 62.5% so that 1rem === 10px, making rem calculations easy.
+ */
+html {
+  font-size: 62.5%;
+}
+
+/* Theme variables. These custom properties control colours in both light and dark modes. */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --link-color: #007acc;
+  --header-bg: #ffffff;
+  --content-bg: #ffffff;
+  --toggle-bg: #f0f0f0;
+  --toggle-color: #000000;
+}
+
+/* Dark mode overrides. When the body has class "dark", these values take precedence. */
+body.dark {
+  --bg-color: #111111;
+  --text-color: #f5f5f5;
+  --link-color: #80bfff;
+  --header-bg: #1a1a1a;
+  --content-bg: #222222;
+  --toggle-bg: #333333;
+  --toggle-color: #f5f5f5;
+}
+
+/* Body base styles */
+body {
+  font-size: 1.5em; /* fix Chrome bug misinterpreting rems on body */
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: "Roboto", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  max-width: 80rem;
+  margin: 2.5rem auto;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Links */
+a {
+  font-weight: normal;
+  text-decoration: none;
+  color: var(--link-color);
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-weight: 300;
+  color: var(--text-color);
+}
+h1 { font-size: 3.6rem; letter-spacing: -0.1rem; }
+h2 { font-size: 3.0rem; letter-spacing: -0.1rem; }
+h3 { font-size: 2.4rem; letter-spacing: -0.08rem; }
+h4 { font-size: 1.8rem; letter-spacing: -0.05rem; }
+h5 { font-size: 1.5rem; }
+h6 { font-size: 1.4rem; }
+
+/* Paragraphs */
+p {
+  margin: 0 auto 1.5em auto;
+}
+
+/* Layout */
+header, #content, footer {
+  background: var(--content-bg);
+  padding: 2.5rem;
+  transition: background-color 0.3s ease;
+}
+
+ul.main-menu {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  list-style: none;
+}
+ul.main-menu li a {
+  margin-right: 2rem;
+  font-size: 2.0rem;
+  border-bottom: solid transparent 0.3rem;
+  color: var(--text-color);
+}
+ul.main-menu li a:hover {
+  color: var(--link-color);
+}
+ul.main-menu li a.active {
+  border-bottom-color: var(--link-color);
+}
+
+/* Hide/show utility classes */
+.hide { display: none; }
+.show { display: block; }
+
+/* Theme toggle button */
+#theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: var(--toggle-bg);
+  color: var(--toggle-color);
+  border: 1px solid var(--toggle-color);
+  border-radius: 0.4rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.4rem;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+#theme-toggle:hover {
+  filter: brightness(0.95);
+}
